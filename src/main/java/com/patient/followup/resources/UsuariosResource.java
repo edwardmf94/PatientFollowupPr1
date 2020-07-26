@@ -34,7 +34,10 @@ public class UsuariosResource {
 		Usuarios user = usuariosService.findByUsuCip(username);
 		System.out.println(user);
 		if(user!=null) {
-			if(user.getUsuPassword().equals(pwd)) {
+			System.out.println(pwd);
+			System.out.println(user.getUsuPassword());
+			System.out.println(user.getToken());
+			if(user.getUsuPassword().trim().equals(pwd)) {
 				user.setToken(token);
 				return user;
 			}else {
@@ -44,6 +47,18 @@ public class UsuariosResource {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
 		}
 		
+	}
+	
+	@PostMapping("signup")
+	public Usuarios signup(@RequestParam("username") String username, @RequestParam("password") String pwd) {
+		Usuarios user = new Usuarios();
+		user.setUsuCip(username);
+		user.setUsuPassword(pwd);
+		user.setUsuEstado(1);
+		String token = getJWTToken(username);
+		user.setToken(token);
+		usuariosService.create(user);
+		return user;
 	}
 	
 	private String getJWTToken(String username) {
