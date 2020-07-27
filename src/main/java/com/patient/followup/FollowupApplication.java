@@ -2,6 +2,7 @@ package com.patient.followup;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,7 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.patient.followup.security.JWTAuthorizationFilter;
 
 @SpringBootApplication
-public class FollowupApplication {
+public class FollowupApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FollowupApplication.class, args);
