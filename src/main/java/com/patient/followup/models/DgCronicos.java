@@ -4,155 +4,85 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="dg_cronicos")
+@Table(name="TN_PacFichaCron")
 public class DgCronicos {
 	@Id
-	@Column(name="cro_id")
-	private int croId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_unico")
+	private int idUnico;
 	
-	@Column(name="usu_cip")
-	private String usuCip;
-	
-	@Column(name="cro_apenom")
-	private String croApenom;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="cro_fechnac")
-	private Date croFechnac;
-	
-	@Column(name="cro_sexo")
-	private String croSexo;
-	
-	@Column(name="cro_direccion")
-	private String croDireccion;
-	
-	@Column(name="cro_telefono")
-	private String croTelefono;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="cro_fechinsc")
-	private Date croFechinsc;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name="cro_cecultmod")
-	private Date croFecultmod;
-	
-	@Column(name="id_departamento")
-	private String idDepartamento;
-	
-	@Column(name="id_provincia")
-	private String idProvincia;
+	@Column(name="id_farmacia")
+	private String idFarmacia;
 	
 	@Column(name="id_distrito")
 	private String idDistrito;
 	
-	@Column(name="cro_unidad")
-	private int croUnidad;
+	@Column(name="edad_pac")
+	private int edadPac;
 	
-	@Column(name="id_grado")
-	private int idGrado;
+	@Column(name="apellidos_nombres")
+	private String apellidosNombres;
 	
-	@Column(name="cro_arma")
-	private int croArma;
+	@Column(name="cip_pac")
+	private String cipPac;
 	
-	@Column(name="cro_sitmil")
-	private int croSitmil;
+	@Column(name="dni_pac")
+	private String dniPac;
 	
-	@Column(name="cro_dni")
-	private String croDni;
+	@Column(name="telefono_pac")
+	private String telefonoPac;
+	
+	@Column(name="sexo_pac")
+	private String sexoPac;
+	
+	@Column(name="direccion_pac")
+	private String direccionPac;
+	
+	@Column(name="justificacion_medica")
+	private String justificacionMedica;
+	
+	@Column(name="id_especialidad")
+	private String idEspecialidad;
+	
+	@Column(name="descripcionEspe")
+	private String descripcionEspe;
+	
+	@Column(name="cie10_pac")
+	private String cie10Pac;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_ficha")
+	private Date fechaFicha;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_modificacion")
+	private Date fechaModificacion;
+	
+	@Column(name="usuario_registro")
+	private String usuarioRegistro;
 
-	public int getCroId() {
-		return croId;
+	public int getIdUnico() {
+		return idUnico;
 	}
 
-	public void setCroId(int croId) {
-		this.croId = croId;
+	public void setIdUnico(int idUnico) {
+		this.idUnico = idUnico;
 	}
 
-	public String getUsuCip() {
-		return usuCip;
+	public String getIdFarmacia() {
+		return idFarmacia;
 	}
 
-	public void setUsuCip(String usuCip) {
-		this.usuCip = usuCip;
-	}
-
-	public String getCroApenom() {
-		return croApenom;
-	}
-
-	public void setCroApenom(String croApenom) {
-		this.croApenom = croApenom;
-	}
-
-	public Date getCroFechnac() {
-		return croFechnac;
-	}
-
-	public void setCroFechnac(Date croFechnac) {
-		this.croFechnac = croFechnac;
-	}
-
-	public String getCroSexo() {
-		return croSexo;
-	}
-
-	public void setCroSexo(String croSexo) {
-		this.croSexo = croSexo;
-	}
-
-	public String getCroDireccion() {
-		return croDireccion;
-	}
-
-	public void setCroDireccion(String croDireccion) {
-		this.croDireccion = croDireccion;
-	}
-
-	public String getCroTelefono() {
-		return croTelefono;
-	}
-
-	public void setCroTelefono(String croTelefono) {
-		this.croTelefono = croTelefono;
-	}
-
-	public Date getCroFechinsc() {
-		return croFechinsc;
-	}
-
-	public void setCroFechinsc(Date croFechinsc) {
-		this.croFechinsc = croFechinsc;
-	}
-
-	public Date getCroFecultmod() {
-		return croFecultmod;
-	}
-
-	public void setCroFecultmod(Date croFecultmod) {
-		this.croFecultmod = croFecultmod;
-	}
-
-	public String getIdDepartamento() {
-		return idDepartamento;
-	}
-
-	public void setIdDepartamento(String idDepartamento) {
-		this.idDepartamento = idDepartamento;
-	}
-
-	public String getIdProvincia() {
-		return idProvincia;
-	}
-
-	public void setIdProvincia(String idProvincia) {
-		this.idProvincia = idProvincia;
+	public void setIdFarmacia(String idFarmacia) {
+		this.idFarmacia = idFarmacia;
 	}
 
 	public String getIdDistrito() {
@@ -163,43 +93,116 @@ public class DgCronicos {
 		this.idDistrito = idDistrito;
 	}
 
-	public int getCroUnidad() {
-		return croUnidad;
+	public int getEdadPac() {
+		return edadPac;
 	}
 
-	public void setCroUnidad(int croUnidad) {
-		this.croUnidad = croUnidad;
+	public void setEdadPac(int edadPac) {
+		this.edadPac = edadPac;
 	}
 
-	public int getIdGrado() {
-		return idGrado;
+	public String getApellidosNombres() {
+		return apellidosNombres;
 	}
 
-	public void setIdGrado(int idGrado) {
-		this.idGrado = idGrado;
+	public void setApellidosNombres(String apellidosNombres) {
+		this.apellidosNombres = apellidosNombres;
 	}
 
-	public int getCroArma() {
-		return croArma;
+	public String getCipPac() {
+		return cipPac;
 	}
 
-	public void setCroArma(int croArma) {
-		this.croArma = croArma;
+	public void setCipPac(String cipPac) {
+		this.cipPac = cipPac;
 	}
 
-	public int getCroSitmil() {
-		return croSitmil;
+	public String getDniPac() {
+		return dniPac;
 	}
 
-	public void setCroSitmil(int croSitmil) {
-		this.croSitmil = croSitmil;
+	public void setDniPac(String dniPac) {
+		this.dniPac = dniPac;
 	}
 
-	public String getCroDni() {
-		return croDni;
+	public String getTelefonoPac() {
+		return telefonoPac;
 	}
 
-	public void setCroDni(String croDni) {
-		this.croDni = croDni;
+	public void setTelefonoPac(String telefonoPac) {
+		this.telefonoPac = telefonoPac;
 	}
+
+	public String getSexoPac() {
+		return sexoPac;
+	}
+
+	public void setSexoPac(String sexoPac) {
+		this.sexoPac = sexoPac;
+	}
+
+	public String getDireccionPac() {
+		return direccionPac;
+	}
+
+	public void setDireccionPac(String direccionPac) {
+		this.direccionPac = direccionPac;
+	}
+
+	public String getJustificacionMedica() {
+		return justificacionMedica;
+	}
+
+	public void setJustificacionMedica(String justificacionMedica) {
+		this.justificacionMedica = justificacionMedica;
+	}
+
+	public String getIdEspecialidad() {
+		return idEspecialidad;
+	}
+
+	public void setIdEspecialidad(String idEspecialidad) {
+		this.idEspecialidad = idEspecialidad;
+	}
+
+	public String getDescripcionEspe() {
+		return descripcionEspe;
+	}
+
+	public void setDescripcionEspe(String descripcionEspe) {
+		this.descripcionEspe = descripcionEspe;
+	}
+
+	public String getCie10Pac() {
+		return cie10Pac;
+	}
+
+	public void setCie10Pac(String cie10Pac) {
+		this.cie10Pac = cie10Pac;
+	}
+
+	public Date getFechaFicha() {
+		return fechaFicha;
+	}
+
+	public void setFechaFicha(Date fechaFicha) {
+		this.fechaFicha = fechaFicha;
+	}
+
+	public Date getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(Date fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public String getUsuarioRegistro() {
+		return usuarioRegistro;
+	}
+
+	public void setUsuarioRegistro(String usuarioRegistro) {
+		this.usuarioRegistro = usuarioRegistro;
+	}
+	
 }

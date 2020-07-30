@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.patient.followup.models.DgCronicos;
 
 public interface DgCronicosRepository extends JpaRepository<DgCronicos, String> {
-	public DgCronicos findByUsuCip(String usuCip);
+	public DgCronicos findByCipPac(String usuCip);
 }

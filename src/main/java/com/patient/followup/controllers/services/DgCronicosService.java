@@ -25,7 +25,7 @@ public class DgCronicosService {
 		return this.dgCronicosRepository.save(dgCronicos);
 	}
 	
-	public DgCronicos findByUsuCip(String usuCip) {
-		return this.dgCronicosRepository.findByUsuCip(usuCip);
+	public DgCronicos findByCipPac(String usuCip) {
+		return this.dgCronicosRepository.findByCipPac(usuCip);
 	}
 }
