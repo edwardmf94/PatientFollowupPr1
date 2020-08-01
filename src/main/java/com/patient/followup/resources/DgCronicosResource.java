@@ -1,6 +1,7 @@
 package com.patient.followup.resources;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,7 +27,7 @@ public class DgCronicosResource {
 			@RequestParam("cip") String cip,
 			@RequestParam("apenom") String apenom, 
 			@RequestParam("celular") String celular,
-			@RequestParam("edad") Integer edad,
+			@RequestParam("edad") String edad,
 			@RequestParam("sexo") String sexo,
 			@RequestParam("id_farmacia") String id_faracia,
 			@RequestParam("id_distrito") String id_distrito,
@@ -36,13 +37,26 @@ public class DgCronicosResource {
 			@RequestParam("descripcion_espe") String descripcion_espe,
 			@RequestParam("cie10") String cie10,
 			@AuthenticationPrincipal String username) {
-		if(username.equals(cip)) {
+		System.out.println("cip "+ cip);
+		System.out.println("token "+ username);
+		if(username.equals(cip.trim())) {
 			DgCronicos dgCronicos = dgCronicosService.findByCipPac(username);
+			if(dgCronicos==null) {
+				dgCronicos = new DgCronicos();
+				DgCronicos last_register = dgCronicosService.findLastRecord();
+				System.out.println(last_register.getIdUnico());
+				dgCronicos.setIdUnico(last_register.getIdUnico()+1);
+				dgCronicos.setFechaFicha(new Date());
+				dgCronicos.setUsuarioRegistro("VISITANTE");
+			}
+			
 			dgCronicos.setDniPac(dni);
 			dgCronicos.setCipPac(cip);
 			dgCronicos.setApellidosNombres(apenom);
 			dgCronicos.setTelefonoPac(celular);
-			dgCronicos.setEdadPac(edad);
+			if(edad!=null) {
+				dgCronicos.setEdadPac(Integer.valueOf(edad));
+			}
 			dgCronicos.setSexoPac(sexo);
 			dgCronicos.setIdFarmacia(id_faracia);
 			dgCronicos.setIdDistrito(id_distrito);
@@ -51,10 +65,13 @@ public class DgCronicosResource {
 			dgCronicos.setIdEspecialidad(id_especialidad);
 			dgCronicos.setDescripcionEspe(descripcion_espe);
 			dgCronicos.setCie10Pac(cie10);
+			dgCronicos.setFechaModificacion(new Date());
+			System.out.println("se ejecuta creacion "+ dgCronicos.getIdUnico());
 			dgCronicosService.create(dgCronicos);
+			
 			return dgCronicos;
 		}else {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El CIP no coincide con el token de seguridad");
+			throw new ResponseStatusException(HttpStatus.NON_AUTHORITATIVE_INFORMATION, "El CIP no coincide con el token de seguridad");
 		}
 	}
 	

@@ -11,9 +11,9 @@
 	<groupId>com.patient</groupId>
 	<artifactId>followup</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>followup</name>
-	<description>PatientFollowip peru Services</description>
+	<description>PatientFollowup peru Services</description>
 
 	<properties>
 		<java.version>1.8</java.version>

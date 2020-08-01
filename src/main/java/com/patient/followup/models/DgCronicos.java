@@ -12,10 +12,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="TN_PacFichaCron")
+@Table(name="TN_pacfichacron")
 public class DgCronicos {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_unico")
 	private int idUnico;
 	
