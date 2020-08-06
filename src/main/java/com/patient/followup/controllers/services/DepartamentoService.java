@@ -19,4 +19,7 @@ public class DepartamentoService {
 		return this.departamentoRepository.findAll();
 	}
 
+	public Departamento getOne(String idDepartament) {
+		return this.departamentoRepository.getOne(idDepartament);
+	}
 }

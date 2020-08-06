@@ -6,38 +6,36 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="beneficiarios")
+@Table(name="TN_pacientecg")
 public class Beneficiario {
 	@Id
-	@Column(name="bene_if")
-	private int beneId;
+	@Column(name="id_paciente_cg")
+	private String beneId;
 	
-	@Column(name="usu_cip")
-	private String usuCip;
-	
-	@Column(name="bene_cip")
+	@Column(name="cip_pac")
 	private String beneCip;
 	
-	@Column(name="bene_cat")
-	private String beneCat;
-	
-	@Column(name="bene_apenom")
+	@Column(name="apellidos_nombres_pac")
 	private String beneApenom;
+	
+	@Column(name="parentesco_pac")
+	private String parentescoPac;
+	
 
-	public int getBeneId() {
+	public String getParentescoPac() {
+		return parentescoPac;
+	}
+
+	public void setParentescoPac(String parentescoPac) {
+		this.parentescoPac = parentescoPac;
+	}
+
+	public String getBeneId() {
 		return beneId;
 	}
 
-	public void setBeneId(int beneId) {
+	public void setBeneId(String beneId) {
 		this.beneId = beneId;
-	}
-
-	public String getUsuCip() {
-		return usuCip;
-	}
-
-	public void setUsuCip(String usuCip) {
-		this.usuCip = usuCip;
 	}
 
 	public String getBeneCip() {
@@ -46,14 +44,6 @@ public class Beneficiario {
 
 	public void setBeneCip(String beneCip) {
 		this.beneCip = beneCip;
-	}
-
-	public String getBeneCat() {
-		return beneCat;
-	}
-
-	public void setBeneCat(String beneCat) {
-		this.beneCat = beneCat;
 	}
 
 	public String getBeneApenom() {

@@ -22,8 +22,10 @@ public class BeneficiarioResource {
 	
 	@GetMapping("beneficiario")
 	public List<Beneficiario> getAllByUsuCip(@AuthenticationPrincipal String username) {
-		
-		List<Beneficiario> beneficiarios = beneficiarioService.findByUsuCip(username);
+		//String username  = "3189511";
+		List<Beneficiario> beneficiarios = beneficiarioService.findBeneficiariosTitular(username);
+		System.out.println("getAllByUsuCip");
+		System.out.println(beneficiarios);
 		if(beneficiarios!=null) {
 			return beneficiarios;
 		}else {

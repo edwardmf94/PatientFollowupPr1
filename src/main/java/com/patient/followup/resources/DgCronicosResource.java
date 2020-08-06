@@ -11,15 +11,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.patient.followup.controllers.services.Cie10Service;
+import com.patient.followup.controllers.services.DepartamentoService;
 import com.patient.followup.controllers.services.DgCronicosService;
+import com.patient.followup.controllers.services.DistritoService;
+import com.patient.followup.controllers.services.ProvinciaService;
+import com.patient.followup.models.Cie10;
+import com.patient.followup.models.Departamento;
 import com.patient.followup.models.DgCronicos;
+import com.patient.followup.models.Distrito;
+import com.patient.followup.models.Provincia;
 
 @RestController
 public class DgCronicosResource {
 	private DgCronicosService dgCronicosService;
+	private DistritoService distritoService;
+	private ProvinciaService provinciaService;
+	private DepartamentoService departamentoService;
+	private Cie10Service cie10Service;
 	
-	public DgCronicosResource(DgCronicosService dgCronicosService) {
+	public DgCronicosResource(DgCronicosService dgCronicosService, 
+			DistritoService distritoService, 
+			ProvinciaService provinciaService, 
+			DepartamentoService departamentoService,
+			Cie10Service cie10Service) {
 		this.dgCronicosService = dgCronicosService;
+		this.distritoService = distritoService;
+		this.provinciaService = provinciaService;
+		this.departamentoService = departamentoService;
+		this.cie10Service = cie10Service;
 	}
 	
 	@PostMapping("dg_cronico")
@@ -78,6 +98,16 @@ public class DgCronicosResource {
 	@GetMapping("dg_cronico")
 	public DgCronicos getByUsuCip(@AuthenticationPrincipal String username) {
 		DgCronicos dgCronicos = dgCronicosService.findByCipPac(username);
+		Distrito distrito = distritoService.getOne(dgCronicos.getIdDistrito());
+		Provincia provincia = provinciaService.getOne(distrito.getIdProvincia());
+		Departamento departamento = departamentoService.getOne(provincia.getIdDepartament());
+		Cie10 cie10 = cie10Service.getOne(dgCronicos.getCie10Pac());
+		dgCronicos.setDistritoNombre(distrito.getDescripcionDistrito());
+		dgCronicos.setProvinciaNombre(provincia.getDescripcionProvincia());
+		dgCronicos.setProvinciaId(provincia.getIdProvincia());
+		dgCronicos.setDepartamentoId(distrito.getIdDepartament());
+		dgCronicos.setDepartamentoNombre(departamento.getDescripcionDepart());
+		dgCronicos.setCie10PacDescripcion(cie10.getDescripcion());
 		return dgCronicos;
 	}
 }

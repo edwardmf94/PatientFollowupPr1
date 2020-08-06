@@ -18,4 +18,8 @@ public class ProvinciaService {
 	public List<Provincia> findByIdDepartament(String idDepartament) {
 		return this.provinciaRepository.findByIdDepartament(idDepartament);
 	}
+	
+	public Provincia getOne(String idProvincia) {
+		return this.provinciaRepository.getOne(idProvincia);
+	}
 }

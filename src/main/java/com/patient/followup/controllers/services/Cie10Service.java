@@ -21,4 +21,8 @@ public class Cie10Service {
 		Pageable top = PageRequest.of(0, 20);
 		return cie10Repository.findByDescripcionLike(query, top);
 	}
+	
+	public Cie10 getOne(String codigo) {
+		return cie10Repository.getOne(codigo);
+	}
 }

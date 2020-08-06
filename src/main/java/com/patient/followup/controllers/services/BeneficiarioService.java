@@ -17,7 +17,11 @@ public class BeneficiarioService {
 		this.benficiarioRepository = benficiarioRepository;
 	}
 	
-	public List<Beneficiario> findByUsuCip(String usuCip) {
+	/*public List<Beneficiario> findByUsuCip(String usuCip) {
 		return this.benficiarioRepository.findByUsuCip(usuCip);
+	}*/
+	
+	public List<Beneficiario> findBeneficiariosTitular(String cip_pac){
+		return this.benficiarioRepository.findBeneficiariosTitular(cip_pac);
 	}
 }

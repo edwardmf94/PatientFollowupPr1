@@ -18,4 +18,8 @@ public class DistritoService {
 	public List<Distrito> findByIdProvincia(String idProvincia){
 		return this.distritoRepository.findByIdProvincia(idProvincia);
 	}
+	
+	public Distrito getOne(String idDistrito) {
+		return this.distritoRepository.getOne(idDistrito);
+	}
 }

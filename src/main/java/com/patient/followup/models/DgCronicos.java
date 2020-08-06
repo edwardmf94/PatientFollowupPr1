@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="TN_pacfichacron")
@@ -67,6 +68,24 @@ public class DgCronicos {
 	
 	@Column(name="usuario_registro")
 	private String usuarioRegistro;
+	
+	@Transient
+	private String distritoNombre;
+	
+	@Transient
+	private String provinciaId;
+	
+	@Transient
+	private String provinciaNombre;
+	
+	@Transient
+	private String departamentoId;
+	
+	@Transient
+	private String departamentoNombre;
+	
+	@Transient
+	private String cie10PacDescripcion;
 
 	public int getIdUnico() {
 		return idUnico;
@@ -202,6 +221,54 @@ public class DgCronicos {
 
 	public void setUsuarioRegistro(String usuarioRegistro) {
 		this.usuarioRegistro = usuarioRegistro;
+	}
+
+	public String getDistritoNombre() {
+		return distritoNombre;
+	}
+
+	public void setDistritoNombre(String distritoNombre) {
+		this.distritoNombre = distritoNombre;
+	}
+
+	public String getProvinciaId() {
+		return provinciaId;
+	}
+
+	public void setProvinciaId(String provinciaId) {
+		this.provinciaId = provinciaId;
+	}
+
+	public String getProvinciaNombre() {
+		return provinciaNombre;
+	}
+
+	public void setProvinciaNombre(String provinciaNombre) {
+		this.provinciaNombre = provinciaNombre;
+	}
+
+	public String getDepartamentoId() {
+		return departamentoId;
+	}
+
+	public void setDepartamentoId(String departamentoId) {
+		this.departamentoId = departamentoId;
+	}
+
+	public String getDepartamentoNombre() {
+		return departamentoNombre;
+	}
+
+	public void setDepartamentoNombre(String departamentoNombre) {
+		this.departamentoNombre = departamentoNombre;
+	}
+
+	public String getCie10PacDescripcion() {
+		return cie10PacDescripcion;
+	}
+
+	public void setCie10PacDescripcion(String cie10PacDescripcion) {
+		this.cie10PacDescripcion = cie10PacDescripcion;
 	}
 	
 }
